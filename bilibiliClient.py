@@ -103,7 +103,10 @@ class bilibiliClient():
                         continue
 
     def parseDanMu(self, messages):
-        dic = json.loads(messages)
+        try:
+            dic = json.loads(messages)
+        except: # 有些情况会 jsondecode 失败，未细究，可能平台导致
+            return
         cmd = dic['cmd']
         if cmd == 'LIVE':
             print ('直播开始。。。')
