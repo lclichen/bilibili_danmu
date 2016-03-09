@@ -90,7 +90,10 @@ class bilibiliClient():
                 elif num==3 or num==4:
                     tmp = await self._reader.read(num2)
                     # strbytes, = unpack('!s', tmp)
-                    messages = tmp.decode('utf-8')
+                    try: # 为什么还会出现 utf-8 decode error??????
+                        messages = tmp.decode('utf-8')
+                    except:
+                        continue
                     self.parseDanMu(messages)
                     continue
                 elif num==5 or num==6 or num==7:
