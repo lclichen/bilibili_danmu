@@ -10,13 +10,16 @@ import config
 class bilibiliClient():
     def __init__(self):
         self._CIDInfoUrl = 'http://live.bilibili.com/api/player?id=cid:'
-        self._roomId = 1011
+        self._roomId = 0
         self._ChatPort = 788
         self._protocolversion = 1
         self._reader = 0
         self._writer = 0
         self.connected = False
         self._UserCount = 0
+
+        self._roomId = input('请输入房间号：')
+        self._roomId = int(self._roomId)
 
     async def connectServer(self):
         print ('正在进入房间。。。。。')
@@ -128,7 +131,7 @@ class bilibiliClient():
             Giftrcost = dic['data']['rcost']
             GiftNum = dic['data']['num']
             try:
-                print(GiftUser + ' 送出了 ' + str(GiftNum) + ' 个 ' + GiftName + ' , 价值为 ' + str(Giftrcost))
+                print(GiftUser + ' 送出了 ' + str(GiftNum) + ' 个 ' + GiftName)
             except:
                 pass
             return
