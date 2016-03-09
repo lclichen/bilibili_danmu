@@ -141,7 +141,7 @@ class bilibiliClient():
         if cmd == 'WELCOME' and config.TURN_WELCOME == 1:
             commentUser = dic['data']['uname']
             try:
-                print ('欢迎 ' + commentUser)
+                print ('欢迎 ' + commentUser + '进入房间。。。。')
             except:
                 pass
             return
