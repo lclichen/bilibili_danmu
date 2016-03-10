@@ -17,6 +17,7 @@ class bilibiliClient():
         self._writer = 0
         self.connected = False
         self._UserCount = 0
+        self._ChatHost = 'livecmt-1.bilibili.com'
 
         self._roomId = input('请输入房间号：')
         self._roomId = int(self._roomId)
@@ -24,12 +25,17 @@ class bilibiliClient():
     async def connectServer(self):
         print ('正在进入房间。。。。。')
         with aiohttp.ClientSession() as s:
-            async with s.get(self._CIDInfoUrl + str(self._roomId)) as r:
-                xml_string = '<root>' + await r.text() + '</root>'
-                dom = xml.dom.minidom.parseString(xml_string)
-                root = dom.documentElement
-                server = root.getElementsByTagName('server')
-                self._ChatHost = server[0].firstChild.data
+            try:
+                async with s.get(self._CIDInfoUrl + str(self._roomId)) as r:
+                    xml_string = '<root>' + await r.text() + '</root>'
+                    dom = xml.dom.minidom.parseString(xml_string)
+                    root = dom.documentElement
+                    server = root.getElementsByTagName('server')
+                    self._ChatHost = server[0].firstChild.data
+            except:
+                print ('进入房间错误。。。')
+                return
+
 
         reader, writer = await asyncio.open_connection(self._ChatHost, self._ChatPort)
         self._reader = reader
