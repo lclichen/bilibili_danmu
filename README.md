@@ -18,3 +18,7 @@ Python 抓取 B 站直播弹幕。
     python3 main.py
     
 根据提示输入房间号即可。
+
+## 以此为基础做的弹幕收集系统
+
+[Top 100 UP主的24小时弹幕收集器](https://github.com/lyyyuna/bilibili_danmu_colloector)
