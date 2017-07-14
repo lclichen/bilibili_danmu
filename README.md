@@ -1,6 +1,6 @@
 # B 站直播弹幕姬 Python 版
 
-Python 抓取 B 站直播弹幕。
+Python 抓取 B 站直播弹幕。另外我还写了 [Go 版的直播弹幕](https://github.com/lyyyuna/bilibili_danmu)。
 
 ## 简单说明
 
