@@ -12,7 +12,7 @@ try:
     loop.run_until_complete(asyncio.wait(tasks))
 except KeyboardInterrupt:
     danmuji.connected = False
-    for task in asyncio.Task.all_tasks():
+    for task in asyncio.all_tasks():
         task.cancel()
     loop.run_forever()
 
